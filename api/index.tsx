@@ -83,7 +83,6 @@ async function fetchUserData(fid: string) {
   return user;
 }
 
-
 export const app = new Frog({
   assetsPath: '/',
   basePath: '/api/frame',
