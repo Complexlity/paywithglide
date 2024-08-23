@@ -24,8 +24,8 @@ import truncate from "truncate-utf8-bytes";
 import dotenv from 'dotenv';
 
 // Uncomment this packages to tested on local server
-import { devtools } from 'frog/dev'
-import { serveStatic } from 'frog/serve-static'
+// import { devtools } from 'frog/dev'
+// import { serveStatic } from 'frog/serve-static'
 
 // Load environment variables from .env file
 dotenv.config();
@@ -1117,8 +1117,8 @@ app.image(
           <Spacer size="10" />
           
           <Box
-            paddingLeft="192"
-            paddingRight="192"
+            paddingLeft="160"
+            paddingRight="160"
           >
             <text 
               style={{
@@ -1253,8 +1253,8 @@ app.image(
           <Spacer size="10" />
           
           <Box
-            paddingLeft="192"
-            paddingRight="192"
+            paddingLeft="160"
+            paddingRight="160"
           >
             <text 
               style={{
@@ -1302,7 +1302,7 @@ app.image(
 
 
 // Uncomment for local server testing
-devtools(app, { serveStatic });
+// devtools(app, { serveStatic });
 
 
 export const GET = handle(app)
