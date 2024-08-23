@@ -319,6 +319,7 @@ app.image("/review-image/:toFid", async (c) => {
               height="256"
               src={pfpUrl}
               style={{
+                border: "2px solid #DDDDDD",
                 borderRadius: "20px",
                 objectFit: "cover",
                 maxWidth: "100%",
@@ -735,6 +736,7 @@ app.image(
                 height="256"
                 src={pfpUrl}
                 style={{
+                  border: "2px solid #DDDDDD",
                   borderRadius: "20px",
                   objectFit: "cover",
                   maxWidth: "100%",
@@ -1082,6 +1084,7 @@ app.image(
                 width="256"
                 src={fromPfpUrl}
                 style={{
+                  border: "2px solid #DDDDDD",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
@@ -1094,6 +1097,7 @@ app.image(
                 width="256"
                 src={toPfpUrl}
                 style={{
+                  border: "2px solid #DDDDDD",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
@@ -1218,6 +1222,7 @@ app.image(
                 width="256"
                 src={fromPfpUrl}
                 style={{
+                  border: "2px solid #DDDDDD",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
@@ -1230,6 +1235,7 @@ app.image(
                 width="256"
                 src={toPfpUrl}
                 style={{
+                  border: "2px solid #DDDDDD",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
