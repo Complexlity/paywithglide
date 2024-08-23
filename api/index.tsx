@@ -24,8 +24,8 @@ import truncate from "truncate-utf8-bytes";
 import dotenv from 'dotenv';
 
 // Uncomment this packages to tested on local server
-// import { devtools } from 'frog/dev'
-// import { serveStatic } from 'frog/serve-static'
+import { devtools } from 'frog/dev'
+import { serveStatic } from 'frog/serve-static'
 
 // Load environment variables from .env file
 dotenv.config();
@@ -85,8 +85,10 @@ async function fetchUserData(fid: string) {
 
 
 export const app = new Frog({
+  assetsPath: '/',
+  basePath: '/api/frame',
   ui: { vars },
-  title: "Pay with Glide - send tokens to anyone from any chain",
+  title: 'PayWithGlide.xyz',
   imageAspectRatio: "1:1",
   imageOptions: {
     height: 1024,
@@ -94,15 +96,14 @@ export const app = new Frog({
   },
   browserLocation: CAST_INTENS,
   headers: {
-    "cache-control":
-      "no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0",
+    'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
   },
 }).use(
   neynar({
-    apiKey: process.env.NEYNAR_API_KEY || "NEYNAR_FROG_FM",
-    features: ["interactor", "cast"],
+    apiKey: process.env.NEYNAR_API_KEY || 'NEYNAR_FROG_FM',
+    features: ['interactor', 'cast'],
   }),
-);
+)
 
 // Function to format number
 function formatNumber(num: number) {
@@ -621,7 +622,7 @@ app.image(
         break;
       case "Base":
         paymentCurrencyLogoUrl =
-          `${PUBLIC_URL}/chains/base.png`;
+          `${PUBLIC_URL}/chains/base/icon.png`;
         switch (paymentCurrencyUpperCase) {
           case "USDC":
             paymentCurrencyLogoUrl =
@@ -1302,7 +1303,7 @@ app.image(
 
 
 // Uncomment for local server testing
-// devtools(app, { serveStatic });
+devtools(app, { serveStatic });
 
 
 export const GET = handle(app)
