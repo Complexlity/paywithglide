@@ -276,7 +276,7 @@ app.image("/review-image/:toFid", async (c) => {
 
   const parsedName = parseFullName(user.display_name);
 
-  const displayName = parsedName.first;
+  const displayName = parsedName.first || user.display_name;
 
   const username = user.username;
 
@@ -527,7 +527,7 @@ app.frame("/send/:toFid", async (c) => {
         });
       } else {
         return c.error({
-          message: "An unexpected error occurred. Please try again.",
+          message: "Enter the token amount followed by the token symbol",
         });
       }
     }
@@ -691,7 +691,7 @@ app.image(
 
     const parsedName = parseFullName(user.display_name);
 
-    const displayName = parsedName.first;
+    const displayName = parsedName.first || user.display_name;
 
     const username = user.username;
 
@@ -1049,7 +1049,7 @@ app.image(
     const toPfpUrl = toUser.pfp_url;
 
     const parsedName = parseFullName(toUser.display_name);
-    const toDisplayName = parsedName.first;
+    const toDisplayName = parsedName.first || toUser.display_name;
 
     return c.res({
       image: (
@@ -1187,7 +1187,7 @@ app.image(
     const toPfpUrl = toUser.pfp_url;
 
     const parsedName = parseFullName(toUser.display_name);
-    const toDisplayName = parsedName.first;
+    const toDisplayName = parsedName.first || toUser.display_name;
 
     return c.res({
       image: (
