@@ -342,7 +342,7 @@ app.image("/review-image/:toFid", async (c) => {
               <Spacer size="6" />
   
               <Text align="left" weight="400" color="black" size="24">
-                {truncate(bio, 60) + (Buffer.byteLength(bio, 'utf8') > 60 ? '...' : '')}
+                {truncate(bio, 50) + (Buffer.byteLength(bio, 'utf8') > 50 ? '...' : '')}
               </Text>
               <Spacer size="10" />
   
@@ -372,6 +372,7 @@ app.image("/review-image/:toFid", async (c) => {
             flexDirection="column"
           >
             <text 
+              lang="en"
               style={{
                 border: "none",
                 color: "black",
