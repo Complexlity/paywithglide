@@ -24,8 +24,8 @@ import truncate from "truncate-utf8-bytes";
 import dotenv from 'dotenv';
 
 // Uncomment this packages to tested on local server
-// import { devtools } from 'frog/dev'
-// import { serveStatic } from 'frog/serve-static'
+import { devtools } from 'frog/dev'
+import { serveStatic } from 'frog/serve-static'
 
 // Load environment variables from .env file
 dotenv.config();
@@ -110,6 +110,16 @@ function formatNumber(num: number) {
     return (num / 1000).toFixed(1) + "K";
   }
   return num.toString();
+};
+
+const sanitizeString = (input: string) => {
+  // Remove any non-ASCII characters
+  return input.replace(/[^\x00-\x7F]/g, '');
+};
+
+const capitalize = (name: string) => {
+  if (name.length === 0) return name; // Handle empty string case
+  return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
 // URL for the public server
@@ -273,10 +283,10 @@ app.image("/review-image/:toFid", async (c) => {
   const user = await fetchUserData(toFid);
 
   const pfpUrl = user.pfp_url;
-
+  
   const parsedName = parseFullName(user.display_name);
-
-  const displayName = parsedName.first || user.display_name;
+  
+  const displayName = capitalize(sanitizeString(parsedName.first || user.display_name));
 
   const username = user.username;
 
@@ -716,7 +726,7 @@ app.image(
 
     const parsedName = parseFullName(user.display_name);
 
-    const displayName = parsedName.first || user.display_name;
+    const displayName = capitalize(sanitizeString(parsedName.first || user.display_name));
 
     const username = user.username;
 
@@ -1333,7 +1343,7 @@ app.image(
 
 
 // Uncomment for local server testing
-// devtools(app, { serveStatic });
+devtools(app, { serveStatic });
 
 
 export const GET = handle(app)
